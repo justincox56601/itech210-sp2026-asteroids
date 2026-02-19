@@ -34,17 +34,10 @@ go_font = pygame.font.SysFont("arial", 60)
 bg = pygame.transform.scale(space_bg, (WIDTH, HEIGHT))
 
 #player
-player_angle = -90
-player_size = (50,50)
-player_pos = [WIDTH//2, HEIGHT//2]
-player_hit_radius = 18
-player_speed = 20
-player_lives = 3
 player = {
     'angle': -90,
     'size': (50,50),
     'pos':[WIDTH//2, HEIGHT//2],
-    'hit': 18,
     'speed': 20,
     'lives':3,
     'radius': 19,
@@ -103,9 +96,9 @@ def update_asteroid_position(dt, asteroid):
     asteroid['pos'][1] += dy
 
 def draw_player(screen):
-    player_sprite = pygame.transform.scale(space_ship, player_size)
+    player_sprite = pygame.transform.scale(space_ship, player['size'])
     player_sprite = pygame.transform.rotate(player_sprite, player['angle']*-1)
-    player_rect = player_sprite.get_rect(center=player_pos)
+    player_rect = player_sprite.get_rect(center=player['pos'])
     screen.blit(player_sprite, player_rect)
 
 def draw_bullet(screen, bullet):
